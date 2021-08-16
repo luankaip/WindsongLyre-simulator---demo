@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title>&#x5C06;&#x7B80;&#x8C31;&#x8F6C;&#x4E3A;&#x53EF;&#x8BC6;&#x522B;&#x4E50;&#x8C31;</title>
+	<style type="text/css">
+		body, textarea, button {margin: 2px; padding: 0; background-color: #3F3F3F;}
+		body {white-space:nowrap; overflow-x: hidden; overflow-y: hidden;}
+		textarea {word-break:break-all; resize:none; font-size: 24px; color: #DFDFC6; width: calc(50% - 8px); height: 90vh;}
+		button {font-size: 5vh; color: #DFDFC6; width: calc(100% - 4px); height: calc(10vh - 18px);}
+	</style>
+    <script>
+	let mapSup = { "1": "q", "2": "w", "3": "e", "4": "r", "5": "t", "6": "y", "7": "u"}
+	let map = { "1": "a", "2": "s", "3": "d", "4": "f", "5": "g", "6": "h", "7": "j"}
+	let mapSub = { "1": "z", "2": "x", "3": "c", "4": "v", "5": "b", "6": "n", "7": "m"}
+	function start() {
+			let input = document.getElementById("input").value;
+			let output = "";
+			let i = 0;
+			while (i < input.length) {
+				switch (input[i]) {
+					case "1": output += 'a'; break;
+					case "2": output += 's'; break;
+					case "3": output += 'd'; break;
+					case "4": output += 'f'; break;
+					case "5": output += 'g'; break;
+					case "6": output += 'h'; break;
+					case "7": output += 'j'; break;
+					case "#": output += map[input[++i]].toUpperCase(); break;
+					case "(": output += (input[++i] == '#') ? mapSub[input[++i]].toUpperCase() : mapSub[input[i]]; break;
+					case "[": output += (input[++i] == '#') ? mapSup[input[++i]].toUpperCase() : mapSup[input[i]]; break;
+					case ")": break;
+					case "]": break;
+					case " ": output += '·'; break;
+					case "\n": output += input[i]; break;
+					default: output += '-';
+				}
+				i++;
+			}
+			document.getElementById("output").value = output;
+		}
+	</script>
+</head>
+<body>
+	<textarea id="input" spellcheck="false" placeholder="&#x8BF7;&#x8F93;&#x5165;&#x7B80;&#x8C31;"></textarea>
+	<textarea id="output" spellcheck="false" placeholder="&#39;&#45;&#39;&#x4EE3;&#x8868;&#x88AB;&#x66FF;&#x4EE3;&#x7684;&#x5B57;&#x7B26;&#x4E3A;&#x5176;&#x5B83;&#x5B57;&#x7B26;&#13;&#10;&#39;&#183;&#39;&#x4EE3;&#x8868;&#x88AB;&#x66FF;&#x4EE3;&#x7684;&#x5B57;&#x7B26;&#x4E3A;&#x7A7A;&#x683C;&#x5B57;&#x7B26;&#13;&#10;&#x88AB;&#x66FF;&#x6362;&#x540E;&#x7684;&#39;&#45;&#39;&#44;&#39;&#183;&#39;&#x672C;&#x8EAB;&#x5E76;&#x65E0;&#x533A;&#x522B;"></textarea>
+    <br /><button onclick="start()">start</button>
+</body>
+</html>

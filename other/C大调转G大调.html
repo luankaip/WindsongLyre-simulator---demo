@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title>C&#x5927;&#x8C03;&#x8F6C;G&#x5927;&#x8C03;</title>
+	<style type="text/css">
+		body, textarea, button {margin: 2px; padding: 0; background-color: #3F3F3F;}
+		body {white-space:nowrap; overflow-x: hidden; overflow-y: hidden;}
+		textarea {word-break:break-all; resize:none; font-size: 24px; color: #DFDFC6; width: calc(50% - 8px); height: 90vh;}
+		button {font-size: 5vh; color: #DFDFC6; width: calc(100% - 4px); height: calc(10vh - 18px);}
+	</style>
+    <script>
+	let map = {
+		"i": "t", "o": "y", "p": "u", "I": "T", "O": "Y", "P": "U",
+		"q": "g", "w": "h", "e": "j", "r": "q", "t": "w", "y": "e", "u": "R",
+		"Q": "G", "W": "H", "E": "J", "R": "Q", "T": "W", "Y": "E", "U": "t",
+		"a": "b", "s": "n", "d": "m", "f": "a", "g": "s", "h": "d", "j": "F",
+		"A": "B", "S": "N", "D": "M", "F": "A", "G": "S", "H": "D", "J": "g",
+		"v": "Z", "b": "X", "n": "C", "m": "V",
+		"V": "Z", "B": "X", "N": "C", "M": "b"
+	}
+	function start() {
+			let input = document.getElementById("input").value;
+			let output = "";
+			let i = 0;
+			while (i < input.length) {
+				if (map[input[i]] != undefined) output += map[input[i++]];
+				else output += input[i++];
+			}
+			document.getElementById("output").value = output;
+		}
+	</script>
+</head>
+<body>
+	<textarea id="input" spellcheck="false" placeholder="&#x8BF7;&#x8F93;&#x5165;&#x4E50;&#x8C31;"></textarea>
+	<textarea id="output" spellcheck="false" placeholder="&#x8F6C;&#x8C03;&#x540E;&#x4E50;&#x8C31;"></textarea>
+    <br /><button onclick="start()">start</button>
+</body>
+</html>
