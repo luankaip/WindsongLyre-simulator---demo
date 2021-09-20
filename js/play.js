@@ -55,15 +55,17 @@ function loadingAudio() {
     }
 }
 
-var show = 1;
+var show = true;
 function showTextarea() {
     let inputDiv = document.getElementById("input");
-    if (show == -1) {
-        inputDiv.style = "display:none";
-        show = 1;
+    if (show == false) {
+        inputDiv.classList.remove('input-active')
+        inputDiv.classList.add('input-inactive')
+        show = true;
     } else {
-        inputDiv.style = "display: inline-block";
-        show = -1;
+        inputDiv.classList.remove('input-inactive')
+        inputDiv.classList.add('input-active')
+        show = false;
     }
 }
 
@@ -79,9 +81,12 @@ function clickEnter(e) {
 }
 
 for (let node of document.querySelectorAll('.key')) {
-    node.addEventListener('click', e => {
+    node.addEventListener('mousedown', e => {
         if (show != -1) play(node.id, true);
     });
+//    node.addEventListener('click', e => {
+//        if (show != -1) play(node.id, true);
+//    });
 }
 
 let notes = {};
@@ -199,6 +204,7 @@ function getNewDelayTime(string, i) {
 }
 
 function startMusic() {
+    stopped = false;
     bpm = document.getElementById("bpm").value;
     if (bpm != "") {
         let multiplier = 60 / bpm;
@@ -216,6 +222,6 @@ function pauseMusic() {
 }
 
 function clearMusic() {
-    document.getElementById("bpm").value = "";
+    stopped = true;
     document.getElementById("textareaInput").value = "";
 }
